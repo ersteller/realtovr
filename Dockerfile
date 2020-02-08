@@ -40,19 +40,23 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 RUN apt-get install -y python3-dev python3-tk python-imaging-tk libgtk-3-dev python3-pip
 
 # install numpy and tensorflow 
+# pip install tensorflow==2.0.0 # or tensorflow-gpu==2.0.0
 RUN pip3 install numpy && pip3 install tensorflow
+# tensor flow should be installed now 
 
-# now tensorflow dependancies 
+# now tensorflow dependancies standard image processing libraries including OpenCV:
 RUN pip3 install opencv-contrib-python && pip3 install scikit-image && pip3 install pillow && pip3 install imutils 
 
-# Tese image processing libraries will allow us to perform image I/O, various preprocessing techniques, as well as graphical display.
+# These image processing libraries will allow us to perform image I/O, various preprocessing techniques, as well as graphical display.
 # From there, let’s install machine learning libraries and support libraries, the most notable two being scikit-learn and matplotlib:
 RUN pip3 install scikit-learn && pip3 install matplotlib && pip3 install progressbar2 && pip3 install beautifulsoup4 && pip3 install pandas
 
+# we use python 3 now as default 
+RUN ln -sf /usr/bin/python3.6 /usr/bin/python
 
-## test tensorflow python -c "import tensorflow as tf;print(tf.__version__); import tensorflow.keras cv2;print(cv2.__version__);"
+## test tensorflow
+# python -c "import tensorflow as tf;print(tf.__version__); import tensorflow.keras cv2;print(cv2.__version__);"
 ### should be 2.0.0 and  4.1.2 at least
-
 
 LABEL Name=realtovr Version=0.0.1
 
