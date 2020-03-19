@@ -1,16 +1,4 @@
-# Python support can be specified down to the minor or micro version
-# (e.g. 3.6 or 3.6.3).
-# OS Support also exists for jessie & stretch (slim and full).
-# See https://hub.docker.com/r/library/python/ for all supported Python
-# tags from Docker Hub.
-#FROM python:alpine
-
-# If you prefer miniconda:
-#FROM continuumio/miniconda3
-#FROM victorhcm/opencv:3.2.0-python2.7 as base
 FROM ubuntu:18.04
-
-#  docker run --name <CONTAINER_NAME> -it -v $(pwd):/host victorhcm/opencv /bin/bash
 
 # How to Install tensor flow
 #https://www.pyimagesearch.com/2019/12/09/how-to-install-tensorflow-2-0-on-ubuntu/
@@ -57,16 +45,13 @@ RUN pip3 install opencv-contrib-python && pip3 install scikit-image && pip3 inst
 # From there, let’s install machine learning libraries and support libraries, the most notable two being scikit-learn and matplotlib:
 RUN pip3 install scikit-learn && pip3 install matplotlib && pip3 install progressbar2 && pip3 install beautifulsoup4 && pip3 install pandas
 
-## test tensorflow
-# python -c "import tensorflow as tf;print(tf.__version__); import tensorflow.keras cv2;print(cv2.__version__);"
-### should be 2.0.0 and  4.1.2 at least
-
 ## test x11 forwarding
 # RUN apt-get install -y x11-apps
 
 ENV QT_X11_NO_MITSHM=1
 LABEL Name=realtovr Version=0.0.1
 
+# a little comfort
 RUN echo "exit" >> ~/.bash_history
 
 WORKDIR /host
