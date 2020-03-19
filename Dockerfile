@@ -56,24 +56,18 @@ RUN pip3 install opencv-contrib-python && pip3 install scikit-image && pip3 inst
 # These image processing libraries will allow us to perform image I/O, various preprocessing techniques, as well as graphical display.
 # From there, let’s install machine learning libraries and support libraries, the most notable two being scikit-learn and matplotlib:
 RUN pip3 install scikit-learn && pip3 install matplotlib && pip3 install progressbar2 && pip3 install beautifulsoup4 && pip3 install pandas
-RUN echo "exit" >> ~/.bash_history
 
 ## test tensorflow
 # python -c "import tensorflow as tf;print(tf.__version__); import tensorflow.keras cv2;print(cv2.__version__);"
 ### should be 2.0.0 and  4.1.2 at least
 
+## test x11 forwarding
+# RUN apt-get install -y x11-apps
+
+ENV QT_X11_NO_MITSHM=1
 LABEL Name=realtovr Version=0.0.1
 
-# Using pip:
-#RUN python3 -m pip install -r requirements.txt
+RUN echo "exit" >> ~/.bash_history
+
 WORKDIR /host
 CMD ["bin/bash"]
-
-# Using pipenv:
-#RUN python3 -m pip install pipenv
-#RUN pipenv install --ignore-pipfile
-#CMD ["pipenv", "run", "python3", "-m", "realtovr"]
-
-# Using miniconda (make sure to replace 'myenv' w/ your environment name):
-#RUN conda env create -f environment.yml
-#CMD /bin/bash -c "source activate myenv && python3 -m realtovr"
