@@ -7,15 +7,17 @@ this is not very practical on a windows machine where you would have to utilize 
 
 
 # Build
-docker build -t realtovr -f Dockerfile .
+```docker build -t realtovr -f Dockerfile . ```
 
 # Run windows
-docker run -it -v ${pwd}:/host realtovr /bin/bash
+```docker run -it -v ${pwd}:/host realtovr /bin/bash```
 
 # run with local x11 
+```
 docker run -it \
     -e DISPLAY=$DISPLAY \
     -v $(pwd):/host \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v $HOME/.Xauthority:/root/.Xauthority:rw \
     realtovr /bin/bash
+```
