@@ -1,13 +1,16 @@
 # realtovr
-this image containes opencv and tensorflow. i did this so i dont have to setup dependancies everytime i install something python related
+this image containes opencv and tensorflow. I did this so i dont have to setup dependencies everytime i install something python related
 
 ### TODO:
-for image outpu i use the local xserver 
-this is not very practical on a windows machine where you would have to utilize either cygwins xwin or VcXsrv. maybe a webserver would be better and with less dependancies to the host machine. 
+For image output i currently use the local xserver 
+this is not very practical on a windows machine where you would have to utilize either cygwins xwin or VcXsrv. Maybe a webserver would be better and with less dependancies to the host machine. So there is a python webserver that shows the images in ./static. you can overwrite the images in the scripts and reloat the website.
 
 
 # Build
 ```docker build -t realtovr -f Dockerfile . ```
+
+# Run Linux webserver and bash
+```docker run -it -p 80:80 -v $(pwd):/host realtovr /bin/bash -c "python src/srv.py & /bin/bash"```
 
 # Run windows
 ```docker run -it -v ${pwd}:/host realtovr /bin/bash```

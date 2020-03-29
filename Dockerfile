@@ -47,6 +47,7 @@ RUN pip3 install scikit-learn && pip3 install matplotlib && pip3 install progres
 
 ## test x11 forwarding
 # RUN apt-get install -y x11-apps
+RUN pip3 install flask
 
 ENV QT_X11_NO_MITSHM=1
 LABEL Name=realtovr Version=0.0.1
