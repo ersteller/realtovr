@@ -5,6 +5,8 @@ this image containes opencv and tensorflow. I did this so i dont have to setup d
 For image output i currently use the local xserver 
 this is not very practical on a windows machine where you would have to utilize either cygwins xwin or VcXsrv. Maybe a webserver would be better and with less dependancies to the host machine. So there is a python webserver that shows the images in ./static. you can overwrite the images in the scripts and reloat the website.
 
+# Docker Repository
+https://hub.docker.com/r/ersteller/realtovr
 
 # Build
 ```docker build -t realtovr -f Dockerfile . ```
